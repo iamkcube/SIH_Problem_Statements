@@ -48,7 +48,7 @@ for index, heading_title in enumerate(heading_titles,1):
             title_text = td_element.get_text(strip=True)
             
             # Print the extracted title text
-            print(title_text)
+            # print(title_text)
             title_text = title_text.replace("\t","").replace("\n"," ")
             allTitles.append(title_text)
     else:
@@ -62,12 +62,12 @@ for index, heading_description in enumerate(heading_descriptions,1):
             description_text = td_element.get_text(strip=True)
             
             # Print the extracted description text
-            print(description_text)
+            # print(description_text)
             description_text = description_text.replace("\t","").replace("\n"," ")
             allDescriptions.append(description_text)
     else:
         print("Heading 'Description' not found.")
 
-with open("result.md", "w") as f:
+with open("result.md", "w", encoding="utf-8") as f:
     for index, (title, desc) in enumerate(zip(allTitles,allDescriptions),1):
          f.write(f'## {index}. **{title}**\n{desc}\n\n')
