@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SIH Problem Statements</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<h1>SIH Problem Statements 2023</h1>
+	<div class="lds-ring" id="loading">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	
+	<div id="markdown-container"></div>
+
+
+	<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+	<script>
+		function setLoading(value)
+		{
+			const loading = document.getElementById("loading");
+			if (value)
+			{
+				loading.style.display = "block"
+			}
+			else
+			{
+				loading.style.display = "none"
+			}
+		}
+		// Function to fetch and render Markdown content
+		function renderMarkdown()
+		{
+			// Get the container element
+			const container = document.getElementById("markdown-container");
+			setLoading(true);
+
+			// Create a new Showdown converter instance
+			const converter = new showdown.Converter();
+
+			// Fetch your README.md file (adjust the URL as needed)
+			fetch("README.md")
+				.then((response) => response.text())
+				.then((markdown) =>
+				{
+					// Convert Markdown to HTML
+					const html = converter.makeHtml(markdown);
+
+					// Insert the HTML into the container
+					setLoading(false);
+					container.innerHTML = html;
+				})
+				.catch((error) =>
+				{
+					console.error("Error fetching or rendering Markdown:", error);
+				});
+		}
+
+		// Call the renderMarkdown function when the page loads
+		window.addEventListener("load", renderMarkdown);
+	</script>
+</body>
+
+</html>
