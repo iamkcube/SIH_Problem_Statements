@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,700&display=swap');
 
-/* Box sizing rules
+/* Box sizing rules */
 *,
 *::before,
 *::after
@@ -81,9 +81,9 @@ select
 	}
 }
 
-*/ *
+*
 {
-	outline: 1px solid green;
+	/* outline: 1px solid green; */
 }
 
 body
@@ -134,8 +134,9 @@ p
 {
 	display: inline-block;
 	position: relative;
-	width: 80px;
-	height: 80px;
+	width: 8rem;
+	height: 8rem;
+	margin: 4rem auto;
 }
 
 .lds-ring div
@@ -143,13 +144,12 @@ p
 	box-sizing: border-box;
 	display: block;
 	position: absolute;
-	width: 64px;
-	height: 64px;
-	margin: 8px;
-	border: 8px solid #fff;
+	width: 8rem;
+	height: 8rem;
+	border: 0.6rem solid #b084f7;
 	border-radius: 50%;
 	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-	border-color: #fff transparent transparent transparent;
+	border-color: #b084f7 transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1)
