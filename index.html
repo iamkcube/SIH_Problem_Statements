@@ -24,7 +24,7 @@
 
 
 	<a id="up_arrow" href="#">
-		<img src="https://img.icons8.com/color/48/b084f7/circled-chevron-up--v1.png" alt="up_arrow">
+		<img src="https://img.icons8.com/color/100/b084f7/circled-chevron-up--v1.png" alt="up_arrow">
 	</a>
 	<div id="breadcrumb"></div>
 	<div id="container"></div>
@@ -62,14 +62,14 @@
 					for (const item of data)
 					{
 						breadcrumb.innerHTML += `<a href="#${ item.psNo }">${ item.psNo }</a>`
-						container.innerHTML += `<h2 id="${ item.psNo }">${ item.psNo }.${ item.title }</h2><p>${ item.desc }</p>`;
+						container.innerHTML += `<h2 id="${ item.psNo }">${ item.psNo }. ${ item.title }</h2><p>${ item.desc }</p>`;
 					}
 				})
 				.catch((error) =>
 				{
 					setLoading(false);
-					container.innerHTML += '<h2>Error Fetching. Please Reload.</h2><p>${error}</p>';
-					console.error("Error fetching or rendering Markdown:", error);
+					container.innerHTML += `<h2>Error Fetching. Please Reload.</h2><p>${error}</p>`;
+					console.error("Error fetching:", error);
 				});
 		}
 
