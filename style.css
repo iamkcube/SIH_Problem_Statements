@@ -156,7 +156,7 @@ a:visited
 
 p
 {
-	text-align: justify;
+	/* text-align: justify; */
 	color: #333;
 	font-weight: 500;
 }
