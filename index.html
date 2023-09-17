@@ -21,11 +21,8 @@
 		<div></div>
 	</div>
 
-	
-	<div id="markdown-container"></div>
+	<div id="container"></div>
 
-
-	<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
 
 	<script>
 		function setLoading(value)
@@ -41,35 +38,32 @@
 			}
 		}
 		// Function to fetch and render Markdown content
-		function renderMarkdown()
+		function renderJson()
 		{
-			// Get the container element
-			const container = document.getElementById("markdown-container");
+			const container = document.getElementById("container");
 			setLoading(true);
 
-			// Create a new Showdown converter instance
-			const converter = new showdown.Converter();
-
-			// Fetch your README.md file (adjust the URL as needed)
-			fetch("./readme.md")
-				.then((response) => response.text())
-				.then((markdown) =>
+			fetch("./readme.json")
+				.then((response) => response.json())
+				.then((data) =>
 				{
-					// Convert Markdown to HTML
-					const html = converter.makeHtml(markdown);
+					console.log(data);
 
-					// Insert the HTML into the container
 					setLoading(false);
-					container.innerHTML = html;
+					for (const item of data)
+					{
+						container.innerHTML += `<h2>${ item.psNo }.${ item.title }</h2><p>${ item.desc }</p>`;
+					}
 				})
 				.catch((error) =>
 				{
+					setLoading(false);
+					container.innerHTML += '<h2>Error Fetching. Please Reload.</h2><p>${error}</p>';
 					console.error("Error fetching or rendering Markdown:", error);
 				});
 		}
 
-		// Call the renderMarkdown function when the page loads
-		window.addEventListener("load", renderMarkdown);
+		window.addEventListener("load", renderJson);
 	</script>
 </body>
 

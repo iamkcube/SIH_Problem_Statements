@@ -120,8 +120,7 @@ h2
 
 p
 {
-	text-wrap: balance;
-	/* opacity: 90%; */
+	text-align: justify;
 	color: #333;
 	font-weight: 500;
 }
