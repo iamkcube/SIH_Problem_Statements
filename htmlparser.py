@@ -18,7 +18,7 @@ for index, heading_title in enumerate(heading_titles,1):
             td_element = heading_title.find_next('td')
             title_text = td_element.get_text(strip=True)
             
-            title_text = title_text.replace("\t","").replace("\n"," ")
+            title_text = title_text.replace("\t","").replace("\n"," ").replace("ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢", "'")
             allTitles.append(title_text)
     else:
         print("Heading 'Title' not found.")
@@ -29,7 +29,7 @@ for index, heading_description in enumerate(heading_descriptions,1):
             td_element = heading_description.find_next('td')
             description_text = td_element.get_text(strip=True)
             
-            description_text = description_text.replace("\t","").replace("\n"," ")
+            description_text = description_text.replace("\t","").replace("\n"," ").replace("ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢", "'")
             allDescriptions.append(description_text)
     else:
         print("Heading 'Description' not found.")
