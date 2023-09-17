@@ -26,7 +26,7 @@ ol[role='list']
 }
 
 /* Set core root defaults */
-html:focus-within
+html
 {
 	scroll-behavior: smooth;
 }
@@ -117,6 +117,38 @@ h2
 	line-height: 1.2;
 	margin-block-start: 4rem;
 }
+
+#breadcrumb
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 5ch);
+	place-items: center;
+}
+
+#container
+{
+	position: relative;
+}
+
+#up_arrow
+{
+	position: fixed;
+	right: 10%;
+	bottom: 2rem;
+}
+
+a
+{
+	/* display: inline-block; */
+	color: #b084f7;
+	text-decoration: none;
+}
+
+a:visited
+{
+	color: lightsalmon;
+}
+
 
 p
 {
