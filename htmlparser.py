@@ -1,24 +1,23 @@
 from bs4 import BeautifulSoup
+import ftfy
 
 with open("website.html", "r", encoding="utf-8") as file:
     html_content = file.read()
+    html_content = ftfy.fix_text(html_content)
 
 soup = BeautifulSoup(html_content, 'html.parser')
 allTitles = []
 allDescriptions =[]
 
-heading_titles = soup.find_all('th', string='''Problem Statement
-																		Title''')
-
-heading_descriptions = soup.find_all('th', string='Description')
+heading_titles = soup.select("#settings>thead>tr:nth-child(2)>td")
+heading_descriptions = soup.select("#settings>thead>tr:nth-child(3)>td")
 
 for index, heading_title in enumerate(heading_titles,1):
     
     if heading_title:
-            td_element = heading_title.find_next('td')
-            title_text = td_element.get_text(strip=True)
+            title_text = heading_title.get_text(strip=True)
             
-            title_text = title_text.replace("\t","").replace("\n"," ").replace("ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢", "'")
+            title_text = title_text.replace("\t","").replace("\n"," ")
             allTitles.append(title_text)
     else:
         print("Heading 'Title' not found.")
@@ -26,10 +25,9 @@ for index, heading_title in enumerate(heading_titles,1):
 for index, heading_description in enumerate(heading_descriptions,1):
 
     if heading_description:
-            td_element = heading_description.find_next('td')
-            description_text = td_element.get_text(strip=True)
+            description_text = heading_description.get_text(strip=True)
             
-            description_text = description_text.replace("\t","").replace("\n"," ").replace("ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢", "'")
+            description_text = description_text.replace("\t","").replace("\n"," ")
             allDescriptions.append(description_text)
     else:
         print("Heading 'Description' not found.")
