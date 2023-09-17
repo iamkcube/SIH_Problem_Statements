@@ -56,19 +56,29 @@
 				.then((response) => response.json())
 				.then((data) =>
 				{
-					console.log(data);
-
 					setLoading(false);
 					for (const item of data)
 					{
 						breadcrumb.innerHTML += `<a href="#${ item.psNo }">${ item.psNo }</a>`
 						container.innerHTML += `<h2 id="${ item.psNo }">${ item.psNo }. ${ item.title }</h2><p>${ item.desc }</p>`;
 					}
+
+					const targetID = window.location.hash;
+					if (targetID)
+					{
+						const targetElement = document.getElementById(targetID.substring(1,));
+
+						if (targetElement)
+						{
+							targetElement.scrollIntoView({ behavior: "smooth" });
+						}
+					}
+
 				})
 				.catch((error) =>
 				{
 					setLoading(false);
-					container.innerHTML += `<h2>Error Fetching. Please Reload.</h2><p>${error}</p>`;
+					container.innerHTML += `<h2>Error Fetching. Please Reload.</h2><p>${ error }</p>`;
 					console.error("Error fetching:", error);
 				});
 		}
